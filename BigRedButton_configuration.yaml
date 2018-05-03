@@ -1,0 +1,9 @@
+# Need to place this inside configuration.yaml in Home Assistant (usually found at /config/configuration.yaml)
+
+# MySensors config for upper floor lights (wireless)
+mysensors:
+  gateways:
+    - device: '1.2.3.4'
+      tcp_port: 5003
+      persistence_file: '/config/mysensors.persistence2.json'
+  version: '2.0'
