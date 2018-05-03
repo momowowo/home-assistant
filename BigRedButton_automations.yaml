@@ -1,0 +1,52 @@
+# automation.yaml for Home Assistant
+#
+# This file goes with BigRedButton.ino to implement the actual switching on/off of lights
+# Check that automation.yaml is called from configuration.yaml (e.g. automation: !include automations.yaml)
+
+- alias: 'office lights on'
+  trigger:
+    platform: state
+    entity_id: switch.gwbigredbutton_0_1
+    from: 'off'
+    to: 'on'
+  condition:
+    condition: state
+    entity_id: switch.office
+    state: 'off'
+  action:
+    service: switch.turn_on
+    entity_id: switch.office
+
+- alias: 'office lights off'
+  trigger:
+    platform: state
+    entity_id: switch.gwbigredbutton_0_1
+    from: 'off'
+    to: 'on'
+  condition:
+    condition: state
+    entity_id: switch.office
+    state: 'on'
+  action:
+    service: switch.turn_off
+    entity_id: switch.office
+
+- alias: 'all on'
+  trigger:
+    platform: state
+    entity_id: switch.gwbigredbutton_0_2
+    from: 'off'
+    to: 'on'
+  action:
+    service: switch.turn_on
+    entity_id: groups.all_lights
+
+- alias: 'all off'
+  trigger:
+    platform: state
+    entity_id: switch.gwbigredbutton_0_3
+    from: 'off'
+    to: 'on'
+  action:
+    service: switch.turn_off
+    entity_id: groups.all_lights
